@@ -79,3 +79,4 @@ descrpicion pequeña
 - Asegúrate de configurar las credenciales correctas para la base de datos en el archivo `.env`.
 - Para desplegar este backend en un servidor, puedes utilizar **Docker**, **Heroku**, **Vercel**, o cualquier servicio compatible con Node.js.
 
+
