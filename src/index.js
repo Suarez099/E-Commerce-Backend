@@ -20,6 +20,7 @@ const initApp = async () => {
   } catch (error) {
     console.error("❌ Error de conexión:", error.message || error);
   }
+
 };
 
 initApp();
