@@ -9,9 +9,10 @@ Este repositorio contiene el backend de un sistema de eCommerce, desarrollado co
 - **MySQL**: Base de datos relacional utilizada para almacenar la información de los usuarios, productos, pedidos, etc.
 - **Sequelize** (opcional): ORM para la interacción con la base de datos (si es que lo estás usando).
 - **JWT**: Token para la autenticación de usuarios.
-- **Multer**: Middleware para la gestión de archivos e imágenes.
 - **bcrypt**: Librería para el cifrado de contraseñas.
 - **Cookies**: Almacenamiento de tokens de autenticación en el cliente.
+- **Zod**: Almacenamiento de tokens de autenticación en el cliente.
+- **Morgan**: Almacenamiento de tokens de autenticación en el cliente.
 
 ## 🚀 Funcionalidades Principales
 
