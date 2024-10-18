@@ -1,7 +1,7 @@
 import app from "./app.js";
 import { sequelize } from "./database/database.js";
 import { PORT } from "./config.js";
-import "./models/customer.model.js"
+// import "./models/customer.model.js"
 
 const startServer = () => {
   try {
@@ -14,7 +14,7 @@ const startServer = () => {
 };
 const initApp = async () => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
     console.log("✅🗄️ Conexión exitosa a la base de datos.");
     startServer();
   } catch (error) {

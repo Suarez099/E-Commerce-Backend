@@ -1,8 +1,9 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { customer } from "./customer.model.js";
 
-export const customer = sequelize.define(
-  "customer",
+sequelize.define(
+  "data_extra",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,22 +13,19 @@ export const customer = sequelize.define(
     name: {
       type: DataTypes.STRING,
     },
-    email: {
+    phone: {
       type: DataTypes.STRING,
       unique: true,
     },
-    username: {
+    adres: {
       type: DataTypes.STRING,
       unique: true,
-    },
-    image: {
-      type: DataTypes.STRING,
-    },
-    public_id: {
-      type: DataTypes.STRING,
     },
   },
   {
-    timestamps: true,
+    timestamps: false,
   }
 );
+
+// llave forania 1 customer para 1 data_extra
+customer.
