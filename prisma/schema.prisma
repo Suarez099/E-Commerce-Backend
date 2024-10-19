@@ -14,8 +14,10 @@ datasource db {
 }
 
 model Customer {
-  id    Int @id @default(autoincrement())
-  email String @unique
-  name  String
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String
   lastname String?
+  imageUrl String?
+  publicId String?
 }

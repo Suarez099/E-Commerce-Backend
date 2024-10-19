@@ -7,7 +7,7 @@ Este repositorio contiene el backend de un sistema de eCommerce, desarrollado co
 - **Node.js**: Plataforma para la ejecución del backend.
 - **Express.js**: Framework para la creación de la API REST.
 - **MySQL**: Base de datos relacional utilizada para almacenar la información de los usuarios, productos, pedidos, etc.
-- **Sequelize**: ORM para la interacción con la base de datos 
+- **Prisma**: ORM para la interacción con la base de datos 
 - **JWT**: Token para la autenticación de usuarios.
 - **bcrypt**: Librería para el cifrado de contraseñas.
 - **Cookies**: Almacenamiento de tokens de autenticación en el cliente.

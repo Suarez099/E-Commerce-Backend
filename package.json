@@ -4,6 +4,9 @@
   "description": "Backend para un sistema de eCommerce desarrollado con Node.js, Express, y MySQL. Gestiona la autenticación de usuarios, manejo de productos, pedidos y más.",
   "main": "index.js",
   "type": "module",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
