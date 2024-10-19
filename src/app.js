@@ -33,6 +33,8 @@ app.use(morgan("dev"));
 
 // Middleware para interpretar JSON en las peticiones
 app.use(express.json());
+app.use(express.static("public"));
+
 
 // Middleware para manejar cookies
 app.use(cookieParser());
