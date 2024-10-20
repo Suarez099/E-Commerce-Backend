@@ -20,7 +20,7 @@ Este repositorio contiene el backend de un sistema de eCommerce, desarrollado co
 - **Registro e inicio de sesión de usuarios**: Autenticación de clientes utilizando JWT y almacenamiento seguro de contraseñas con bcrypt.
 - **Gestión de productos**: Operaciones CRUD para productos, incluyendo categorías, descripciones y precios.
 - **Carrito de compras y pedidos**: Implementación de un carrito de compras, gestión de pedidos y actualización del stock de productos.
-- **Subida de imágenes**: Subida y gestión de imágenes de perfil de usuarios y productos utilizando Multer.
+- **Subida de imágenes**: Subida y gestión de imágenes de perfil de usuarios y productos utilizando cloudinary.
 - **Autorización y roles**: Control de acceso para diferentes usuarios del sistema (administradores y clientes).
 - **Perfil de usuario**: Los clientes pueden actualizar su información personal y cambiar su imagen de perfil.
 
@@ -43,18 +43,25 @@ Este repositorio contiene el backend de un sistema de eCommerce, desarrollado co
    - Crear un archivo `.env` en la raíz del proyecto con la siguiente estructura:
 
    ```plaintext
-   PORT=4000
-   DB_HOST=localhost
-   DB_USER=tu_usuario
-   DB_PASSWORD=tu_contraseña
-   DB_NAME=ecommerce
-   JWT_SECRET=tu_clave_secreta
+  
+# ==== Puertos ====
+PORT=tu_pueto
+# ==== Cors ====
+CORS_ORIGIN= tu_frontend
+# ==== Key Secret ====
+JWT_SECRET=tu secret key
+# ==== Cloudinary ====
+CLOUDINARY_CLOUD_NAME=name clouninary
+CLOUDINARY_API_KEY=tu ...
+CLOUDINARY_API_SECRET=tu
+
+DATABASE_URL="mysql://usuario:contraseña@localhost:3306/basededatos"
    ```
 
 4. Ejecutar migraciones de la base de datos (si usas un ORM como Sequelize):
 
    ```bash
-   npx sequelize db:migrate
+   npx prisma migrate dev --name nombre_de_migración
    ```
 
 5. Iniciar el servidor:
@@ -63,7 +70,6 @@ Este repositorio contiene el backend de un sistema de eCommerce, desarrollado co
    ```
 
 ## 📂 Estructura del Proyecto
-descrpicion pequeña
 ```
 ┣ 📂controllers       
 ┣ 📂models            

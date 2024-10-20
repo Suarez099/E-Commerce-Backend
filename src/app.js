@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { handleNotFound } from "./middlewares/validateEndpoints.js";
 import authCustomerRoutes from "./routes/authCustomer.routes.js";
+import userManagementRoutes from "./routes/userManagement.Routes.js";
 import { CORS_ORIGIN } from "./config.js";
 
 const app = express();
@@ -33,14 +34,13 @@ app.use(morgan("dev"));
 
 // Middleware para interpretar JSON en las peticiones
 app.use(express.json());
-app.use(express.static("public"));
-
 
 // Middleware para manejar cookies
 app.use(cookieParser());
 
 // Rutas de autenticación y tareas
 app.use("/api", authCustomerRoutes);
+app.use("/api", userManagementRoutes);
 app.use(handleNotFound);
 
 export default app;

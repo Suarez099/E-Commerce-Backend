@@ -13,11 +13,195 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Customer {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  name     String
-  lastname String?
-  imageUrl String?
-  publicId String?
+model User {
+  id           Int        @id @default(autoincrement())
+  email        String     @unique
+  name         String
+  username     String     @unique
+  password     String
+  profileImage Image? // Relación uno a uno con Image (opcional)
+  dataExtra    ExtraData? // Relación uno a uno con Data_Extra (opcional)
+  pets         Pet[]
+  orders       Order[]
+  reviews      Review[]
+  role         Role       @default(USER) // Valor por defecto para el rol
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model Image {
+  id        Int     @id @default(autoincrement())
+  image_url String?
+  public_id String?
+
+  // Relación opcional con el usuario
+  user_id Int?  @unique
+  user    User? @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  // Relación opcional con el producto
+  product_id Int?     @unique
+  product    Product? @relation(fields: [product_id], references: [id], onDelete: Cascade)
+}
+
+model ExtraData {
+  id         Int     @id @default(autoincrement())
+  phone      String? @db.VarChar(20)
+  address    String?
+  city       String?
+  country    String?
+  postalCode String?
+  user_id    Int     @unique // Cada usuario puede tener solo un conjunto de datos extra
+  user       User    @relation(fields: [user_id], references: [id], onDelete: Cascade) // Relación uno a uno con User
+}
+
+enum Role {
+  USER
+  ADMIN
+  VET
+}
+
+model Pet {
+  id           Int            @id @default(autoincrement())
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       Int
+  name         String
+  type         PetType
+  breed        String?
+  age          Int?
+  weight       Float?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  Consultation Consultation[]
+  Appointment  Appointment[]
+}
+
+enum PetType {
+  Dog
+  Cat
+  Bird
+  Other
+}
+
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  stock       Int
+  category    String
+  Image       Image? // Relación uno a uno con Image (opcional)
+  orderItems  OrderItem[]
+  reviews     Review[]
+  inventory   Inventory[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Order {
+  id          Int         @id @default(autoincrement())
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int
+  totalAmount Float
+  status      OrderStatus @default(Pending)
+  orderItems  OrderItem[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+enum OrderStatus {
+  Pending
+  Shipped
+  Delivered
+  Cancelled
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   Int
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  quantity  Int
+  price     Float
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  rating    Int      @default(1)
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Veterinarian {
+  id            Int            @id @default(autoincrement())
+  name          String
+  specialty     String?
+  phone         String?        @db.VarChar(20)
+  email         String?        @unique
+  consultations Consultation[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  Appointment   Appointment[]
+}
+
+model Consultation {
+  id             Int          @id @default(autoincrement())
+  pet            Pet          @relation(fields: [petId], references: [id], onDelete: Cascade)
+  petId          Int
+  veterinarian   Veterinarian @relation(fields: [veterinarianId], references: [id], onDelete: Cascade)
+  veterinarianId Int
+  date           DateTime
+  notes          String?
+  exams          Exam[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Exam {
+  id             Int          @id @default(autoincrement())
+  consultation   Consultation @relation(fields: [consultationId], references: [id], onDelete: Cascade)
+  consultationId Int
+  type           String
+  result         String?
+  date           DateTime
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Appointment {
+  id             Int          @id @default(autoincrement())
+  pet            Pet          @relation(fields: [petId], references: [id], onDelete: Cascade)
+  petId          Int
+  veterinarian   Veterinarian @relation(fields: [veterinarianId], references: [id], onDelete: Cascade)
+  veterinarianId Int
+  date           DateTime
+  service        Service      @relation(fields: [serviceId], references: [id])
+  serviceId      Int
+  notes          String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Service {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String?
+  price        Float
+  appointments Appointment[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Inventory {
+  id        Int      @id @default(autoincrement())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
+  quantity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

@@ -47,4 +47,12 @@ export class authCustomerController {
       });
     }
   }
+
+  static viewCustomer(req, res) {
+    const { id } = req.params;
+    return res.status(200).json({
+      message: "Usuario encontrado",
+      user: { id },
+    });
+  }
 }
