@@ -1,12 +1,13 @@
-# 🌐 Change Language
+# 🌐 Cambiar idioma
 
-Choose your preferred language:
+Elige tu idioma preferido:
 
-- <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English" width="25"/> [English](README.md)
-- <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Español" width="25"/> [Spanish](README_ES.md)
+- <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English" width="25"/> [Ingles](README.md)
+- <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Español" width="25"/> [Español](README_ES.md)
 
-# 🛒 E-Commerce Backend 
-This repository contains the backend of an e-commerce system, developed with **Node.js**, **Express** and **MySQL**. This project is designed to handle all the key functionalities of an eCommerce, including user management, authentication, products, orders, and more.
+# 🛒 E-Commerce Backend
+
+Este repositorio contiene el backend de un sistema de eCommerce, desarrollado con **Node.js**, **Express** y **MySQL**. Este proyecto está diseñado para manejar todas las funcionalidades clave de un eCommerce, incluyendo la gestión de usuarios, autenticación, productos, pedidos, y más.
 
 ## ⚙️ Tecnologías Utilizadas
 

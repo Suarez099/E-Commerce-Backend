@@ -1,0 +1,8 @@
+
+{
+  "PASSWORDS_DO_NOT_MATCH": "Las contraseñas no coinciden.",
+  "EMAIL_FOUND": "El correo electrónico ya está registrado.",
+  "USERNAME_FOUND": "El nombre de usuario ya está registrado.",
+  "USER_REGISTERED_SUCCESS": "Usuario registrado correctamente.",
+  "ERROR_REGISTERING_USER": "Error al registrar el usuario."
+}
