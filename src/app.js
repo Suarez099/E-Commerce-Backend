@@ -7,35 +7,8 @@ import { handleNotFound } from "./middlewares/validateEndpoints.js";
 import authCustomerRoutes from "./routes/authCustomer.routes.js";
 import userManagementRoutes from "./routes/userManagement.Routes.js";
 import { CORS_ORIGIN } from "./config.js";
-import path from "path";
-import { fileURLToPath } from "url";
-import i18next from "i18next";
-import Backend from "i18next-fs-backend";
-import i18nextMiddleware from "i18next-http-middleware";
 
-// Configuración de path para trabajar con ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const app = express();
-
-// Configuración de i18next
-i18next
-  .use(Backend)
-  .use(i18nextMiddleware.LanguageDetector)
-  .init({
-    fallbackLng: "es", // Idioma por defecto
-    preload: ["es", "en"], // Idiomas soportados
-    backend: {
-      loadPath: path.join(__dirname, "/locales/{{lng}}.json"), // Ruta a los archivos JSON de traducción
-    },
-    detection: {
-      order: ["querystring", "cookie", "header"], // Orden de detección
-      caches: ["cookie"], // Guardar idioma en cookie
-    },
-  });
-
-// Middleware para inicializar i18n
-app.use(i18nextMiddleware.handle(i18next));
 
 // Configuración avanzada de CORS
 app.use(

@@ -1,91 +1,92 @@
+
 # 🌐 Change Language
 
 Choose your preferred language:
 
 - <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English" width="25"/> [English](README.md)
-- <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Español" width="25"/> [Spanish](README_ES.md)
+- <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Español" width="25"/> [Español](README_ES.md)
 
-# 🛒 E-Commerce Backend 
-This repository contains the backend of an e-commerce system, developed with **Node.js**, **Express** and **MySQL**. This project is designed to handle all the key functionalities of an eCommerce, including user management, authentication, products, orders, and more.
+# 🛒 Veterinary E-Commerce Backend
 
-## ⚙️ Tecnologías Utilizadas
+This repository contains the backend of an eCommerce system for a veterinary clinic, developed with **Node.js**, **Express**, and **MySQL**. This project handles all key eCommerce functionalities, including user management, authentication, products, orders, images, and more.
 
-- **Node.js**: Plataforma para la ejecución del backend.
-- **Express.js**: Framework para la creación de la API REST.
-- **MySQL**: Base de datos relacional utilizada para almacenar la información de los usuarios, productos, pedidos, etc.
-- **Prisma**: ORM para la interacción con la base de datos
-- **JWT**: Token para la autenticación de usuarios.
-- **bcrypt**: Librería para el cifrado de contraseñas.
-- **Cookies**: Almacenamiento de tokens de autenticación en el cliente.
-- **Zod**: Almacenamiento de tokens de autenticación en el cliente.
-- **Morgan**: Almacenamiento de tokens de autenticación en el cliente.
-- **Cloudinary**:
+## ⚙️ Technologies Used
 
-## 🚀 Funcionalidades Principales
+- **Node.js**: Platform for running the backend.
+- **Express.js**: Framework for building the REST API.
+- **MySQL**: Relational database used to store information about users, products, orders, etc.
+- **Prisma**: ORM for database interaction.
+- **JWT**: Token-based user authentication.
+- **bcrypt**: Library for password encryption.
+- **Cloudinary**: Service for image storage.
+- **cookie-parser**: Handling cookies in requests.
+- **CORS**: Configuration of cross-origin resource sharing between client and server.
+- **dotenv**: Environment variable management.
+- **express-fileupload**: File upload management.
+- **fs-extra**: Advanced file system manipulation.
+- **jsonwebtoken**: Generation and verification of JWT tokens.
+- **morgan**: HTTP request logger.
+- **zod**: Data validation.
 
-- **Registro e inicio de sesión de usuarios**: Autenticación de clientes utilizando JWT y almacenamiento seguro de contraseñas con bcrypt.
-- **Gestión de productos**: Operaciones CRUD para productos, incluyendo categorías, descripciones y precios.
-- **Carrito de compras y pedidos**: Implementación de un carrito de compras, gestión de pedidos y actualización del stock de productos.
-- **Subida de imágenes**: Subida y gestión de imágenes de perfil de usuarios y productos utilizando cloudinary.
-- **Autorización y roles**: Control de acceso para diferentes usuarios del sistema (administradores y clientes).
-- **Perfil de usuario**: Los clientes pueden actualizar su información personal y cambiar su imagen de perfil.
+## 🚀 Main Features
 
-## 🛠️ Configuración y Uso
+- **User registration and login**: Client authentication using JWT and secure password storage with bcrypt.
+- **Product management**: CRUD operations for products, including descriptions, categories, prices, and stock.
+- **Shopping cart and orders**: Shopping cart implementation, order creation, and stock updates.
+- **Image uploads**: Upload and management of user and product images using Cloudinary.
+- **Authorization and roles**: Access control for administrators and clients.
+- **User profile**: Clients can update personal information and change their profile picture.
 
-1. Clonar el repositorio:
+## 🛠️ Setup and Usage
+
+1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Suarez099/E-Commerce-Backend.git
+   git clone https://github.com/your_username/veterinary-ecommerce-backend.git
    ```
 
-2. Instalar dependencias:
+2. Install dependencies:
 
    ```bash
    npm install
    ```
 
-3. Configurar las variables de entorno:
+3. Set up environment variables:
 
-   - Crear un archivo `.env` en la raíz del proyecto con la siguiente estructura:
+   - Create a `.env` file in the root directory with the following structure:
 
    ```plaintext
+   # ==== Ports ====
+   PORT=your_port
 
+   # ==== Cors ====
+   CORS_ORIGIN=your_frontend_url
+
+   # ==== Key Secret ====
+   JWT_SECRET=your_secret_key
+
+   # ==== Cloudinary ====
+   CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+   CLOUDINARY_API_KEY=your_api_key
+   CLOUDINARY_API_SECRET=your_api_secret
+
+   # ==== Database ====
+   DATABASE_URL="mysql://user:password@localhost:3306/database_name"
    ```
 
-# ==== Puertos ====
+4. Run database migrations:
 
-PORT=tu_pueto
+   ```bash
+   npx prisma migrate dev --name migration_name
+   ```
 
-# ==== Cors ====
+5. Start the server:
 
-CORS_ORIGIN= tu_frontend
-
-# ==== Key Secret ====
-
-JWT_SECRET=tu secret key
-
-# ==== Cloudinary ====
-
-CLOUDINARY_CLOUD_NAME=name clouninary
-CLOUDINARY_API_KEY=tu ...
-CLOUDINARY_API_SECRET=tu
-
-DATABASE_URL="mysql://usuario:contraseña@localhost:3306/basededatos"
-
-````
-
-4. Ejecutar migraciones de la base de datos (si usas un ORM como Sequelize):
-
-```bash
-npx prisma migrate dev --name nombre_de_migración
-````
-
-5. Iniciar el servidor:
    ```bash
    npm run dev
    ```
 
-## 📂 Estructura del Proyecto
+## 📂 Project Structure
 
 ```
 ┣ 📂controllers
@@ -100,7 +101,7 @@ npx prisma migrate dev --name nombre_de_migración
 ┗ 📜README.md
 ```
 
-## 📝 Notas Adicionales
+## 📝 Additional Notes
 
-- Asegúrate de configurar las credenciales correctas para la base de datos en el archivo `.env`.
-- Para desplegar este backend en un servidor, puedes utilizar **Docker**, **Heroku**, **Vercel**, o cualquier servicio compatible con Node.js.
+- Make sure to properly configure the database credentials in the `.env` file.
+- To deploy this backend on a server, you can use **Docker**, **Heroku**, **Vercel**, or any other service that supports Node.js.
